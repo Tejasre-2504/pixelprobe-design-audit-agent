@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Regression Report</title>
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+        font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+        background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+        min-height:100vh;padding:30px 20px;
+    }
+    .container{max-width:900px;margin:0 auto;}
+    @keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .tab-content{display:none;}
+    .tab-content.active{display:block;}
+    .tab-btn{
+        padding:10px 20px;border:none;border-radius:10px;
+        background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);
+        font-size:13px;font-weight:600;cursor:pointer;
+        transition:all 0.2s;
+    }
+    .tab-btn.active{background:white;color:#1a1a2e;}
+    .tab-btn:hover{background:rgba(255,255,255,0.2);}
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div style="
+        background:white;border-radius:24px;padding:36px;
+        margin-bottom:20px;box-shadow:0 20px 60px rgba(0,0,0,0.3);
+        animation:fadeIn 0.6s ease;
+    ">
+        <div style="
+            display:inline-block;
+            background:linear-gradient(135deg,#1a1a2e,#0f3460);
+            color:white;padding:6px 16px;border-radius:20px;
+            font-size:12px;font-weight:700;letter-spacing:1px;
+            text-transform:uppercase;margin-bottom:12px;
+        ">🔍 Before / After Regression Analysis</div>
+
+        <h1 style="font-size:28px;font-weight:800;color:#1a1a2e;margin-bottom:16px;">
+            UI/UX Comparison Report
+        </h1>
+
+        <!-- Image names -->
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin-bottom:20px;">
+            <div style="background:#FFF8F0;border-radius:12px;padding:12px 16px;border:2px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:4px;">⬅️ BASELINE</div>
+                <div style="font-size:13px;color:#333;font-weight:600;">before.png</div>
+            </div>
+            <div style="font-size:24px;text-align:center;">→</div>
+            <div style="background:#F0FFF8;border-radius:12px;padding:12px 16px;border:2px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:4px;">➡️ CURRENT</div>
+                <div style="font-size:13px;color:#333;font-weight:600;">after.png</div>
+            </div>
+        </div>
+
+        <!-- Verdict -->
+        <div style="
+            background:#F8F8F8;border-radius:16px;padding:20px 24px;
+            border:2px solid #8E8E9340;
+            display:flex;justify-content:space-between;align-items:center;
+            flex-wrap:wrap;gap:12px;
+        ">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <span style="font-size:36px;">➡️</span>
+                <div>
+                    <div style="font-size:12px;color:#888;font-weight:600;">Overall Verdict</div>
+                    <div style="font-size:28px;font-weight:900;color:#8E8E93;">NEUTRAL</div>
+                </div>
+            </div>
+            <div style="text-align:right;">
+                <div style="font-size:12px;color:#888;margin-bottom:4px;">Confidence</div>
+                <div style="font-size:32px;font-weight:800;color:#27AE60;">100%</div>
+            </div>
+        </div>
+
+        <!-- Net Summary -->
+        <div style="
+            background:linear-gradient(135deg,#F8F9FF,#EEF2FF);
+            border-radius:14px;padding:16px 20px;margin-top:16px;
+            border-left:4px solid #667eea;
+        ">
+            <div style="font-size:12px;color:#667eea;font-weight:700;margin-bottom:4px;">📝 NET SUMMARY</div>
+            <div style="font-size:15px;color:#333;line-height:1.7;">The two pages have distinct design and layout changes, making it difficult to categorize the overall change as purely improved, regressed, or neutral.</div>
+        </div>
+
+        <div style="color:#aaa;font-size:13px;margin-top:12px;">🕐 June 07, 2026 at 16:50</div>
+    </div>
+
+    <!-- Stats -->
+    <div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;animation:fadeIn 0.6s ease 0.2s both;">
+        <div style="flex:1;min-width:120px;background:white;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-top:4px solid #667eea;">
+            <div style="font-size:28px;margin-bottom:6px;">🔍</div>
+            <div style="font-size:28px;font-weight:800;color:#667eea;">7</div>
+            <div style="font-size:12px;color:#888;">Total Changes</div>
+        </div>
+        <div style="flex:1;min-width:120px;background:white;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-top:4px solid #34C759;">
+            <div style="font-size:28px;margin-bottom:6px;">✅</div>
+            <div style="font-size:28px;font-weight:800;color:#34C759;">0</div>
+            <div style="font-size:12px;color:#888;">Improvements</div>
+        </div>
+        <div style="flex:1;min-width:120px;background:white;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-top:4px solid #FF3B30;">
+            <div style="font-size:28px;margin-bottom:6px;">❌</div>
+            <div style="font-size:28px;font-weight:800;color:#FF3B30;">0</div>
+            <div style="font-size:12px;color:#888;">Regressions</div>
+        </div>
+        <div style="flex:1;min-width:120px;background:white;border-radius:16px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-top:4px solid #FF3B30;">
+            <div style="font-size:28px;margin-bottom:6px;">♿</div>
+            <div style="font-size:28px;font-weight:800;color:#FF3B30;">0</div>
+            <div style="font-size:12px;color:#888;">A11y Risks</div>
+        </div>
+    </div>
+
+    
+
+    <!-- Tabs -->
+    <div style="margin-bottom:16px;animation:fadeIn 0.6s ease 0.3s both;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="tab-btn active" onclick="showTab('all')">
+                All Changes (7)
+            </button>
+            <button class="tab-btn" onclick="showTab('regressions')" style="">
+                ❌ Regressions (0)
+            </button>
+            <button class="tab-btn" onclick="showTab('improvements')">
+                ✅ Improvements (0)
+            </button>
+        </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="tab-all" class="tab-content active">
+    <div style="
+        background:white;border-radius:16px;padding:24px;
+        margin-bottom:16px;
+        border-left:5px solid #8E8E93;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        animation:slideIn 0.4s ease 0.0s both;
+        transition:transform 0.2s,box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#8E8E93;color:white;
+                    padding:4px 14px;border-radius:20px;
+                    font-size:12px;font-weight:700;text-transform:uppercase;
+                ">➡️ Neutral</span>
+                
+            </div>
+            <span style="color:#999;font-size:12px;font-weight:600;
+                background:#F8F8F8;padding:4px 10px;border-radius:8px;">
+                D001
+            </span>
+        </div>
+
+        <div style="background:#F8F8F8;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E0E0E0;">
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Top navigation bar</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div style="background:#FFF8F0;border-radius:10px;padding:12px;border:1px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:6px;">⬅️ BEFORE</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Dark gray background with white text and a prominent search bar</div>
+            </div>
+            <div style="background:#F0FFF8;border-radius:10px;padding:12px;border:1px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:6px;">➡️ AFTER</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">White background with a mix of colors and a less prominent search bar</div>
+            </div>
+        </div>
+
+        
+        
+
+        <div style="background:#F8F9FF;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E8ECFF;">
+            <div style="font-size:12px;color:#667eea;font-weight:600;margin-bottom:4px;">👤 UX Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.5;">No clear impact on user experience</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:6px;">Confidence Score</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:100.0%;background:#27AE60;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:12px;color:#27AE60;font-weight:700;min-width:36px;">100%</span>
+            </div>
+        </div>
+    </div>
+    <div style="
+        background:white;border-radius:16px;padding:24px;
+        margin-bottom:16px;
+        border-left:5px solid #8E8E93;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        animation:slideIn 0.4s ease 0.08s both;
+        transition:transform 0.2s,box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#8E8E93;color:white;
+                    padding:4px 14px;border-radius:20px;
+                    font-size:12px;font-weight:700;text-transform:uppercase;
+                ">➡️ Neutral</span>
+                
+            </div>
+            <span style="color:#999;font-size:12px;font-weight:600;
+                background:#F8F8F8;padding:4px 10px;border-radius:8px;">
+                D002
+            </span>
+        </div>
+
+        <div style="background:#F8F8F8;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E0E0E0;">
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Search bar</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div style="background:#FFF8F0;border-radius:10px;padding:12px;border:1px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:6px;">⬅️ BEFORE</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Centered and prominent</div>
+            </div>
+            <div style="background:#F0FFF8;border-radius:10px;padding:12px;border:1px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:6px;">➡️ AFTER</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Offset to the right and less prominent</div>
+            </div>
+        </div>
+
+        
+        
+
+        <div style="background:#F8F9FF;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E8ECFF;">
+            <div style="font-size:12px;color:#667eea;font-weight:600;margin-bottom:4px;">👤 UX Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.5;">May affect discoverability of search functionality</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:6px;">Confidence Score</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:100.0%;background:#27AE60;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:12px;color:#27AE60;font-weight:700;min-width:36px;">100%</span>
+            </div>
+        </div>
+    </div>
+    <div style="
+        background:white;border-radius:16px;padding:24px;
+        margin-bottom:16px;
+        border-left:5px solid #8E8E93;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        animation:slideIn 0.4s ease 0.16s both;
+        transition:transform 0.2s,box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#8E8E93;color:white;
+                    padding:4px 14px;border-radius:20px;
+                    font-size:12px;font-weight:700;text-transform:uppercase;
+                ">➡️ Neutral</span>
+                
+            </div>
+            <span style="color:#999;font-size:12px;font-weight:600;
+                background:#F8F8F8;padding:4px 10px;border-radius:8px;">
+                D003
+            </span>
+        </div>
+
+        <div style="background:#F8F8F8;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E0E0E0;">
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Hero section</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div style="background:#FFF8F0;border-radius:10px;padding:12px;border:1px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:6px;">⬅️ BEFORE</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Bestselling kurtas with a pink background</div>
+            </div>
+            <div style="background:#F0FFF8;border-radius:10px;padding:12px;border:1px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:6px;">➡️ AFTER</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Exclusive coupon offer with a white background</div>
+            </div>
+        </div>
+
+        
+        
+
+        <div style="background:#F8F9FF;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E8ECFF;">
+            <div style="font-size:12px;color:#667eea;font-weight:600;margin-bottom:4px;">👤 UX Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.5;">Changes the initial focus of the page</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:6px;">Confidence Score</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:100.0%;background:#27AE60;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:12px;color:#27AE60;font-weight:700;min-width:36px;">100%</span>
+            </div>
+        </div>
+    </div>
+    <div style="
+        background:white;border-radius:16px;padding:24px;
+        margin-bottom:16px;
+        border-left:5px solid #8E8E93;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        animation:slideIn 0.4s ease 0.24s both;
+        transition:transform 0.2s,box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#8E8E93;color:white;
+                    padding:4px 14px;border-radius:20px;
+                    font-size:12px;font-weight:700;text-transform:uppercase;
+                ">➡️ Neutral</span>
+                
+            </div>
+            <span style="color:#999;font-size:12px;font-weight:600;
+                background:#F8F8F8;padding:4px 10px;border-radius:8px;">
+                D004
+            </span>
+        </div>
+
+        <div style="background:#F8F8F8;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E0E0E0;">
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Product sections</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div style="background:#FFF8F0;border-radius:10px;padding:12px;border:1px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:6px;">⬅️ BEFORE</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Grid layout with various product categories</div>
+            </div>
+            <div style="background:#F0FFF8;border-radius:10px;padding:12px;border:1px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:6px;">➡️ AFTER</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Row layout with specific product promotions</div>
+            </div>
+        </div>
+
+        
+        
+
+        <div style="background:#F8F9FF;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E8ECFF;">
+            <div style="font-size:12px;color:#667eea;font-weight:600;margin-bottom:4px;">👤 UX Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.5;">Changes the way products are presented</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:6px;">Confidence Score</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:100.0%;background:#27AE60;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:12px;color:#27AE60;font-weight:700;min-width:36px;">100%</span>
+            </div>
+        </div>
+    </div>
+    <div style="
+        background:white;border-radius:16px;padding:24px;
+        margin-bottom:16px;
+        border-left:5px solid #8E8E93;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        animation:slideIn 0.4s ease 0.32s both;
+        transition:transform 0.2s,box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#8E8E93;color:white;
+                    padding:4px 14px;border-radius:20px;
+                    font-size:12px;font-weight:700;text-transform:uppercase;
+                ">➡️ Neutral</span>
+                
+            </div>
+            <span style="color:#999;font-size:12px;font-weight:600;
+                background:#F8F8F8;padding:4px 10px;border-radius:8px;">
+                D005
+            </span>
+        </div>
+
+        <div style="background:#F8F8F8;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E0E0E0;">
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Navigation menu</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div style="background:#FFF8F0;border-radius:10px;padding:12px;border:1px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:6px;">⬅️ BEFORE</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Various categories like 'All', 'MX Player', 'Sell', etc.</div>
+            </div>
+            <div style="background:#F0FFF8;border-radius:10px;padding:12px;border:1px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:6px;">➡️ AFTER</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Categories like 'For You', 'Fashion', 'Mobiles', etc.</div>
+            </div>
+        </div>
+
+        
+        
+
+        <div style="background:#F8F9FF;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E8ECFF;">
+            <div style="font-size:12px;color:#667eea;font-weight:600;margin-bottom:4px;">👤 UX Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.5;">May affect user navigation and discovery</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:6px;">Confidence Score</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:100.0%;background:#27AE60;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:12px;color:#27AE60;font-weight:700;min-width:36px;">100%</span>
+            </div>
+        </div>
+    </div>
+    <div style="
+        background:white;border-radius:16px;padding:24px;
+        margin-bottom:16px;
+        border-left:5px solid #8E8E93;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        animation:slideIn 0.4s ease 0.4s both;
+        transition:transform 0.2s,box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#8E8E93;color:white;
+                    padding:4px 14px;border-radius:20px;
+                    font-size:12px;font-weight:700;text-transform:uppercase;
+                ">➡️ Neutral</span>
+                
+            </div>
+            <span style="color:#999;font-size:12px;font-weight:600;
+                background:#F8F8F8;padding:4px 10px;border-radius:8px;">
+                D006
+            </span>
+        </div>
+
+        <div style="background:#F8F8F8;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E0E0E0;">
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Cart and account</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div style="background:#FFF8F0;border-radius:10px;padding:12px;border:1px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:6px;">⬅️ BEFORE</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Cart and account links on the top right</div>
+            </div>
+            <div style="background:#F0FFF8;border-radius:10px;padding:12px;border:1px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:6px;">➡️ AFTER</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Cart link on the top right, account link on the top right with a dropdown</div>
+            </div>
+        </div>
+
+        
+        
+
+        <div style="background:#F8F9FF;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E8ECFF;">
+            <div style="font-size:12px;color:#667eea;font-weight:600;margin-bottom:4px;">👤 UX Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.5;">May affect accessibility of account information</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:6px;">Confidence Score</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:100.0%;background:#27AE60;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:12px;color:#27AE60;font-weight:700;min-width:36px;">100%</span>
+            </div>
+        </div>
+    </div>
+    <div style="
+        background:white;border-radius:16px;padding:24px;
+        margin-bottom:16px;
+        border-left:5px solid #8E8E93;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        animation:slideIn 0.4s ease 0.48s both;
+        transition:transform 0.2s,box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#8E8E93;color:white;
+                    padding:4px 14px;border-radius:20px;
+                    font-size:12px;font-weight:700;text-transform:uppercase;
+                ">➡️ Neutral</span>
+                
+            </div>
+            <span style="color:#999;font-size:12px;font-weight:600;
+                background:#F8F8F8;padding:4px 10px;border-radius:8px;">
+                D007
+            </span>
+        </div>
+
+        <div style="background:#F8F8F8;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E0E0E0;">
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Location setting</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div style="background:#FFF8F0;border-radius:10px;padding:12px;border:1px solid #FFE0C0;">
+                <div style="font-size:11px;color:#E67E22;font-weight:700;margin-bottom:6px;">⬅️ BEFORE</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Visible location update link</div>
+            </div>
+            <div style="background:#F0FFF8;border-radius:10px;padding:12px;border:1px solid #C0FFE0;">
+                <div style="font-size:11px;color:#27AE60;font-weight:700;margin-bottom:6px;">➡️ AFTER</div>
+                <div style="font-size:13px;color:#333;line-height:1.5;">Less prominent location setting with a globe icon</div>
+            </div>
+        </div>
+
+        
+        
+
+        <div style="background:#F8F9FF;border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid #E8ECFF;">
+            <div style="font-size:12px;color:#667eea;font-weight:600;margin-bottom:4px;">👤 UX Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.5;">May affect user ability to change location</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;margin-bottom:6px;">Confidence Score</div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:100.0%;background:#27AE60;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:12px;color:#27AE60;font-weight:700;min-width:36px;">100%</span>
+            </div>
+        </div>
+    </div></div>
+    <div id="tab-regressions" class="tab-content"><div style="text-align:center;padding:40px;color:#888;">No findings in this category</div></div>
+    <div id="tab-improvements" class="tab-content"><div style="text-align:center;padding:40px;color:#888;">No findings in this category</div></div>
+
+    <!-- Execution Log -->
+    <div style="
+        background:rgba(0,0,0,0.4);border-radius:20px;padding:24px;
+        margin-top:20px;animation:fadeIn 0.6s ease 0.6s both;
+    ">
+        <h3 style="color:white;font-size:16px;font-weight:700;margin-bottom:14px;">📋 Agent Execution Log</h3>
+        <div style="font-family:monospace;font-size:12px;">
+        <div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:50:13] [INFO] Starting comparison: sample_images/before.png vs sample_images/after.png</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:50:13] [INFO] Calling Groq Vision API for comparison (attempt 1/3)...</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:50:17] [INFO] Groq Vision API comparison call successful.</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:50:17] [INFO] AI returned 7 differences. Validating...</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:50:17] [INFO] Validation: 7 valid, 0 rejected.</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:50:17] [INFO] Comparison complete. Verdict: neutral</div>
+        </div>
+    </div>
+
+    <div style="text-align:center;padding:24px;color:rgba(255,255,255,0.5);font-size:13px;">
+        Generated by Design Audit Agent — Level 2 &nbsp;•&nbsp; June 07, 2026 at 16:50
+    </div>
+
+</div>
+
+<script>
+function showTab(name) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

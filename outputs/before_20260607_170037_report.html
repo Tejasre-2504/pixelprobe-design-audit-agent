@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Design Audit Report — before.png</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:#0a0a0f;
+    color:white;
+    min-height:100vh;
+    padding:30px 20px;
+    overflow-x:hidden;
+}
+.container{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+
+/* Animated background */
+body::before{
+    content:'';
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:
+        radial-gradient(ellipse at 20% 20%,rgba(103,50,242,0.15) 0%,transparent 50%),
+        radial-gradient(ellipse at 80% 80%,rgba(10,132,255,0.1) 0%,transparent 50%),
+        radial-gradient(ellipse at 50% 50%,rgba(48,209,88,0.05) 0%,transparent 70%);
+    pointer-events:none;z-index:0;
+    animation:bgPulse 8s ease-in-out infinite alternate;
+}
+@keyframes bgPulse{
+    from{opacity:0.6;}
+    to{opacity:1;}
+}
+@keyframes slideIn{
+    from{opacity:0;transform:translateY(24px);}
+    to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+@keyframes scoreGlow{
+    0%,100%{filter:drop-shadow(0 0 8px #FFD60A);}
+    50%{filter:drop-shadow(0 0 20px #FFD60A);}
+}
+@keyframes float{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-6px);}
+}
+.glass{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border-radius:24px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Floating orbs decoration -->
+<div style="position:fixed;width:300px;height:300px;
+    background:radial-gradient(circle,rgba(103,50,242,0.08),transparent);
+    border-radius:50%;top:-100px;right:-100px;pointer-events:none;
+    animation:float 6s ease-in-out infinite;z-index:0;"></div>
+<div style="position:fixed;width:200px;height:200px;
+    background:radial-gradient(circle,rgba(10,132,255,0.06),transparent);
+    border-radius:50%;bottom:100px;left:-60px;pointer-events:none;
+    animation:float 8s ease-in-out infinite reverse;z-index:0;"></div>
+
+<!-- Header Card -->
+<div class="glass" style="padding:36px;margin-bottom:20px;animation:fadeIn 0.6s ease;">
+
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;">
+        <div style="flex:1;">
+            <div style="
+                display:inline-flex;align-items:center;gap:8px;
+                background:linear-gradient(135deg,rgba(103,50,242,0.3),rgba(10,132,255,0.3));
+                border:1px solid rgba(103,50,242,0.4);
+                color:white;padding:6px 16px;border-radius:20px;
+                font-size:11px;font-weight:700;letter-spacing:1px;
+                text-transform:uppercase;margin-bottom:16px;
+            ">🎯 Design Audit Report</div>
+
+            <h1 style="
+                font-size:32px;font-weight:900;
+                background:linear-gradient(135deg,#ffffff,rgba(255,255,255,0.6));
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                background-clip:text;margin-bottom:10px;
+            ">UI/UX Analysis</h1>
+
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                <span style="color:rgba(255,255,255,0.4);font-size:13px;">📁</span>
+                <span style="color:rgba(255,255,255,0.6);font-size:13px;">before.png</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:rgba(255,255,255,0.4);font-size:13px;">🕐</span>
+                <span style="color:rgba(255,255,255,0.4);font-size:13px;">June 07, 2026 at 17:00</span>
+            </div>
+        </div>
+
+        <!-- Score -->
+        <div style="text-align:center;animation:scoreGlow 3s ease-in-out infinite;">
+            <svg width="130" height="130" style="transform:rotate(-90deg);">
+                <circle cx="65" cy="65" r="55" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+                <circle cx="65" cy="65" r="55" fill="none" stroke="#FFD60A" stroke-width="10"
+                    stroke-dasharray="345" stroke-dashoffset="138"
+                    stroke-linecap="round"/>
+            </svg>
+            <div style="margin-top:-100px;margin-bottom:60px;">
+                <div style="font-size:34px;font-weight:900;color:#FFD60A;
+                    text-shadow:0 0 20px #FFD60A;">60</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.4);font-weight:600;">Needs Work</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div style="
+        background:linear-gradient(135deg,rgba(103,50,242,0.1),rgba(10,132,255,0.1));
+        border:1px solid rgba(103,50,242,0.2);
+        border-radius:14px;padding:18px 20px;margin-top:20px;
+    ">
+        <div style="font-size:11px;color:rgba(103,50,242,0.9);font-weight:700;
+            margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;">📝 Summary</div>
+        <div style="font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;">
+            The Amazon India homepage has several design issues related to visual hierarchy, contrast, spacing, alignment, and consistency.
+        </div>
+    </div>
+</div>
+
+<!-- Stats -->
+<div style="display:flex;gap:14px;margin-bottom:20px;flex-wrap:wrap;animation:fadeIn 0.6s ease 0.2s both;">
+    
+    <div class="glass" style="flex:1;min-width:130px;padding:20px;text-align:center;
+        border-top:2px solid #BF5AF2;transition:all 0.3s;
+        box-shadow:0 0 20px rgba(0,0,0,0.3);"
+        onmouseover="this.style.boxShadow='0 0 30px rgba(191,90,242,0.4)'"
+        onmouseout="this.style.boxShadow='0 0 20px rgba(0,0,0,0.3)'">
+        <div style="font-size:26px;margin-bottom:8px;">🔍</div>
+        <div style="font-size:26px;font-weight:800;color:#BF5AF2;
+            text-shadow:0 0 12px rgba(191,90,242,0.4);margin-bottom:4px;">5</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);">Total Findings</div>
+    </div>
+    <div class="glass" style="flex:1;min-width:130px;padding:20px;text-align:center;
+        border-top:2px solid #FF2D55;transition:all 0.3s;
+        box-shadow:0 0 20px rgba(0,0,0,0.3);"
+        onmouseover="this.style.boxShadow='0 0 30px rgba(255,45,85,0.4)'"
+        onmouseout="this.style.boxShadow='0 0 20px rgba(0,0,0,0.3)'">
+        <div style="font-size:26px;margin-bottom:8px;">🔴</div>
+        <div style="font-size:26px;font-weight:800;color:#FF2D55;
+            text-shadow:0 0 12px rgba(255,45,85,0.4);margin-bottom:4px;">0</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);">Critical</div>
+    </div>
+    <div class="glass" style="flex:1;min-width:130px;padding:20px;text-align:center;
+        border-top:2px solid #FF9F0A;transition:all 0.3s;
+        box-shadow:0 0 20px rgba(0,0,0,0.3);"
+        onmouseover="this.style.boxShadow='0 0 30px rgba(255,159,10,0.4)'"
+        onmouseout="this.style.boxShadow='0 0 20px rgba(0,0,0,0.3)'">
+        <div style="font-size:26px;margin-bottom:8px;">🟠</div>
+        <div style="font-size:26px;font-weight:800;color:#FF9F0A;
+            text-shadow:0 0 12px rgba(255,159,10,0.4);margin-bottom:4px;">0</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);">High</div>
+    </div>
+    <div class="glass" style="flex:1;min-width:130px;padding:20px;text-align:center;
+        border-top:2px solid #FFD60A;transition:all 0.3s;
+        box-shadow:0 0 20px rgba(0,0,0,0.3);"
+        onmouseover="this.style.boxShadow='0 0 30px rgba(0,0,0,0.3)'"
+        onmouseout="this.style.boxShadow='0 0 20px rgba(0,0,0,0.3)'">
+        <div style="font-size:26px;margin-bottom:8px;">⭐</div>
+        <div style="font-size:26px;font-weight:800;color:#FFD60A;
+            text-shadow:0 0 12px rgba(0,0,0,0.3);margin-bottom:4px;">60/100</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);">Design Score</div>
+    </div>
+</div>
+
+<!-- Breakdown -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;animation:fadeIn 0.6s ease 0.3s both;">
+    <div class="glass" style="padding:24px;">
+        <h3 style="font-size:15px;font-weight:700;color:rgba(255,255,255,0.85);margin-bottom:18px;">
+            📊 Severity Breakdown
+        </h3>
+        
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <span style="width:72px;font-size:12px;color:rgba(255,255,255,0.6);font-weight:600;text-transform:capitalize;">🟡 medium</span>
+                <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:20%;background:#FFD60A;height:100%;border-radius:10px;box-shadow:0 0 8px rgba(255,214,10,0.4)"></div>
+                </div>
+                <span style="font-size:14px;font-weight:700;color:#FFD60A;min-width:20px;">1</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <span style="width:72px;font-size:12px;color:rgba(255,255,255,0.6);font-weight:600;text-transform:capitalize;">🟢 low</span>
+                <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:10px;height:8px;overflow:hidden;">
+                    <div style="width:80%;background:#30D158;height:100%;border-radius:10px;box-shadow:0 0 8px rgba(48,209,88,0.4)"></div>
+                </div>
+                <span style="font-size:14px;font-weight:700;color:#30D158;min-width:20px;">4</span>
+            </div>
+    </div>
+    <div class="glass" style="padding:24px;">
+        <h3 style="font-size:15px;font-weight:700;color:rgba(255,255,255,0.85);margin-bottom:18px;">
+            🎨 Principles Affected
+        </h3>
+        
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid #BF5AF240;
+                color:#BF5AF2;
+                padding:8px 14px;border-radius:20px;
+                font-size:12px;font-weight:600;margin:4px;
+            ">👁️ Visual Hierarchy: <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid #FF2D5540;
+                color:#FF2D55;
+                padding:8px 14px;border-radius:20px;
+                font-size:12px;font-weight:600;margin:4px;
+            ">🎨 Contrast (WCAG AA): <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid #0A84FF40;
+                color:#0A84FF;
+                padding:8px 14px;border-radius:20px;
+                font-size:12px;font-weight:600;margin:4px;
+            ">📐 Spacing: <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid #30D15840;
+                color:#30D158;
+                padding:8px 14px;border-radius:20px;
+                font-size:12px;font-weight:600;margin:4px;
+            ">⚖️ Alignment: <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:rgba(255,255,255,0.05);
+                border:1px solid #FF9F0A40;
+                color:#FF9F0A;
+                padding:8px 14px;border-radius:20px;
+                font-size:12px;font-weight:600;margin:4px;
+            ">🔗 Consistency: <strong>1</strong></div>
+    </div>
+</div>
+
+<!-- Findings -->
+<div style="animation:fadeIn 0.6s ease 0.4s both;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <h2 style="font-size:22px;font-weight:800;
+            background:linear-gradient(135deg,#ffffff,rgba(255,255,255,0.5));
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+            🔍 Detailed Findings
+        </h2>
+        <div style="
+            background:rgba(103,50,242,0.2);border:1px solid rgba(103,50,242,0.3);
+            color:rgba(255,255,255,0.7);padding:6px 16px;
+            border-radius:20px;font-size:13px;font-weight:600;
+        ">5 issues found</div>
+    </div>
+    
+    <div class="finding-card" style="
+        background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+        border:1px solid rgba(255,255,255,0.08);
+        border-left:3px solid #FFD60A;
+        border-radius:16px;padding:24px;margin-bottom:16px;
+        backdrop-filter:blur(20px);
+        box-shadow:0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+        animation:slideIn 0.5s ease 0.0s both;
+        transition:all 0.3s ease;
+        position:relative;overflow:hidden;
+    " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(255,214,10,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05)'">
+
+        <div style="position:absolute;top:0;right:0;width:120px;height:120px;
+            background:radial-gradient(circle,rgba(255,214,10,0.4),transparent 70%);
+            pointer-events:none;"></div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#FFD60A;color:black;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:800;letter-spacing:0.5px;
+                    box-shadow:0 0 12px rgba(255,214,10,0.4);
+                ">🟡 MEDIUM</span>
+                <span style="
+                    background:rgba(255,255,255,0.08);
+                    color:#BF5AF2;
+                    border:1px solid #BF5AF240;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:600;
+                ">👁️ Visual Hierarchy</span>
+            </div>
+            <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;
+                background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:8px;">
+                F001
+            </span>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">📍 Location</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Top navigation bar</div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">⚠️ Issue</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;">The 'Update location' link is not prominent and has a low font size, making it hard to notice.</div>
+        </div>
+
+        <div style="background:rgba(10,132,255,0.08);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(10,132,255,0.2);">
+            <div style="font-size:11px;color:#0A84FF;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">👤 User Impact</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Users may miss the option to update their location, potentially affecting their shopping experience.</div>
+        </div>
+
+        <div style="background:rgba(48,209,88,0.08);border-radius:10px;padding:12px 16px;margin-bottom:14px;border:1px solid rgba(48,209,88,0.2);">
+            <div style="font-size:11px;color:#30D158;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Increase font size and make it more prominent.</div>
+        </div>
+
+        <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Confidence</span>
+                <span style="font-size:13px;color:#30D158;font-weight:700;">80%</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;height:6px;overflow:hidden;">
+                <div style="width:80.0%;background:linear-gradient(90deg,#30D158,#30D15888);
+                    height:100%;border-radius:10px;
+                    box-shadow:0 0 8px #30D15888;
+                    transition:width 1s ease;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+        border:1px solid rgba(255,255,255,0.08);
+        border-left:3px solid #30D158;
+        border-radius:16px;padding:24px;margin-bottom:16px;
+        backdrop-filter:blur(20px);
+        box-shadow:0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+        animation:slideIn 0.5s ease 0.1s both;
+        transition:all 0.3s ease;
+        position:relative;overflow:hidden;
+    " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(48,209,88,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05)'">
+
+        <div style="position:absolute;top:0;right:0;width:120px;height:120px;
+            background:radial-gradient(circle,rgba(48,209,88,0.4),transparent 70%);
+            pointer-events:none;"></div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#30D158;color:black;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:800;letter-spacing:0.5px;
+                    box-shadow:0 0 12px rgba(48,209,88,0.4);
+                ">🟢 LOW</span>
+                <span style="
+                    background:rgba(255,255,255,0.08);
+                    color:#FF2D55;
+                    border:1px solid #FF2D5540;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:600;
+                ">🎨 Contrast (WCAG AA)</span>
+            </div>
+            <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;
+                background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:8px;">
+                F002
+            </span>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">📍 Location</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Search bar background</div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">⚠️ Issue</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;">The search bar background color has low contrast with the surrounding elements.</div>
+        </div>
+
+        <div style="background:rgba(10,132,255,0.08);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(10,132,255,0.2);">
+            <div style="font-size:11px;color:#0A84FF;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">👤 User Impact</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Users may find it hard to focus on the search bar.</div>
+        </div>
+
+        <div style="background:rgba(48,209,88,0.08);border-radius:10px;padding:12px 16px;margin-bottom:14px;border:1px solid rgba(48,209,88,0.2);">
+            <div style="font-size:11px;color:#30D158;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Increase contrast between search bar and surrounding elements.</div>
+        </div>
+
+        <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Confidence</span>
+                <span style="font-size:13px;color:#FFD60A;font-weight:700;">60%</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;height:6px;overflow:hidden;">
+                <div style="width:60.0%;background:linear-gradient(90deg,#FFD60A,#FFD60A88);
+                    height:100%;border-radius:10px;
+                    box-shadow:0 0 8px #FFD60A88;
+                    transition:width 1s ease;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+        border:1px solid rgba(255,255,255,0.08);
+        border-left:3px solid #30D158;
+        border-radius:16px;padding:24px;margin-bottom:16px;
+        backdrop-filter:blur(20px);
+        box-shadow:0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+        animation:slideIn 0.5s ease 0.2s both;
+        transition:all 0.3s ease;
+        position:relative;overflow:hidden;
+    " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(48,209,88,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05)'">
+
+        <div style="position:absolute;top:0;right:0;width:120px;height:120px;
+            background:radial-gradient(circle,rgba(48,209,88,0.4),transparent 70%);
+            pointer-events:none;"></div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#30D158;color:black;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:800;letter-spacing:0.5px;
+                    box-shadow:0 0 12px rgba(48,209,88,0.4);
+                ">🟢 LOW</span>
+                <span style="
+                    background:rgba(255,255,255,0.08);
+                    color:#0A84FF;
+                    border:1px solid #0A84FF40;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:600;
+                ">📐 Spacing</span>
+            </div>
+            <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;
+                background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:8px;">
+                F003
+            </span>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">📍 Location</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Category sections</div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">⚠️ Issue</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;">Inconsistent spacing between category sections.</div>
+        </div>
+
+        <div style="background:rgba(10,132,255,0.08);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(10,132,255,0.2);">
+            <div style="font-size:11px;color:#0A84FF;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">👤 User Impact</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Users may find it hard to distinguish between sections.</div>
+        </div>
+
+        <div style="background:rgba(48,209,88,0.08);border-radius:10px;padding:12px 16px;margin-bottom:14px;border:1px solid rgba(48,209,88,0.2);">
+            <div style="font-size:11px;color:#30D158;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Standardize spacing between sections.</div>
+        </div>
+
+        <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Confidence</span>
+                <span style="font-size:13px;color:#FFD60A;font-weight:700;">70%</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;height:6px;overflow:hidden;">
+                <div style="width:70.0%;background:linear-gradient(90deg,#FFD60A,#FFD60A88);
+                    height:100%;border-radius:10px;
+                    box-shadow:0 0 8px #FFD60A88;
+                    transition:width 1s ease;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+        border:1px solid rgba(255,255,255,0.08);
+        border-left:3px solid #30D158;
+        border-radius:16px;padding:24px;margin-bottom:16px;
+        backdrop-filter:blur(20px);
+        box-shadow:0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+        animation:slideIn 0.5s ease 0.30000000000000004s both;
+        transition:all 0.3s ease;
+        position:relative;overflow:hidden;
+    " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(48,209,88,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05)'">
+
+        <div style="position:absolute;top:0;right:0;width:120px;height:120px;
+            background:radial-gradient(circle,rgba(48,209,88,0.4),transparent 70%);
+            pointer-events:none;"></div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#30D158;color:black;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:800;letter-spacing:0.5px;
+                    box-shadow:0 0 12px rgba(48,209,88,0.4);
+                ">🟢 LOW</span>
+                <span style="
+                    background:rgba(255,255,255,0.08);
+                    color:#30D158;
+                    border:1px solid #30D15840;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:600;
+                ">⚖️ Alignment</span>
+            </div>
+            <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;
+                background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:8px;">
+                F004
+            </span>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">📍 Location</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Section headings</div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">⚠️ Issue</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;">Section headings are not aligned to a grid.</div>
+        </div>
+
+        <div style="background:rgba(10,132,255,0.08);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(10,132,255,0.2);">
+            <div style="font-size:11px;color:#0A84FF;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">👤 User Impact</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Users may find it hard to scan the page.</div>
+        </div>
+
+        <div style="background:rgba(48,209,88,0.08);border-radius:10px;padding:12px 16px;margin-bottom:14px;border:1px solid rgba(48,209,88,0.2);">
+            <div style="font-size:11px;color:#30D158;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Align section headings to a grid.</div>
+        </div>
+
+        <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Confidence</span>
+                <span style="font-size:13px;color:#FFD60A;font-weight:700;">60%</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;height:6px;overflow:hidden;">
+                <div style="width:60.0%;background:linear-gradient(90deg,#FFD60A,#FFD60A88);
+                    height:100%;border-radius:10px;
+                    box-shadow:0 0 8px #FFD60A88;
+                    transition:width 1s ease;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));
+        border:1px solid rgba(255,255,255,0.08);
+        border-left:3px solid #30D158;
+        border-radius:16px;padding:24px;margin-bottom:16px;
+        backdrop-filter:blur(20px);
+        box-shadow:0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
+        animation:slideIn 0.5s ease 0.4s both;
+        transition:all 0.3s ease;
+        position:relative;overflow:hidden;
+    " onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(48,209,88,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05)'">
+
+        <div style="position:absolute;top:0;right:0;width:120px;height:120px;
+            background:radial-gradient(circle,rgba(48,209,88,0.4),transparent 70%);
+            pointer-events:none;"></div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="
+                    background:#30D158;color:black;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:800;letter-spacing:0.5px;
+                    box-shadow:0 0 12px rgba(48,209,88,0.4);
+                ">🟢 LOW</span>
+                <span style="
+                    background:rgba(255,255,255,0.08);
+                    color:#FF9F0A;
+                    border:1px solid #FF9F0A40;
+                    padding:4px 12px;border-radius:20px;
+                    font-size:11px;font-weight:600;
+                ">🔗 Consistency</span>
+            </div>
+            <span style="color:rgba(255,255,255,0.3);font-size:12px;font-weight:600;
+                background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:8px;">
+                F005
+            </span>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">📍 Location</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Product images</div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">⚠️ Issue</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;">Product images have varying aspect ratios.</div>
+        </div>
+
+        <div style="background:rgba(10,132,255,0.08);border-radius:10px;padding:12px 16px;margin-bottom:12px;border:1px solid rgba(10,132,255,0.2);">
+            <div style="font-size:11px;color:#0A84FF;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">👤 User Impact</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Users may find it hard to compare products.</div>
+        </div>
+
+        <div style="background:rgba(48,209,88,0.08);border-radius:10px;padding:12px 16px;margin-bottom:14px;border:1px solid rgba(48,209,88,0.2);">
+            <div style="font-size:11px;color:#30D158;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Standardize product image aspect ratios.</div>
+        </div>
+
+        <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;">Confidence</span>
+                <span style="font-size:13px;color:#FFD60A;font-weight:700;">70%</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;height:6px;overflow:hidden;">
+                <div style="width:70.0%;background:linear-gradient(90deg,#FFD60A,#FFD60A88);
+                    height:100%;border-radius:10px;
+                    box-shadow:0 0 8px #FFD60A88;
+                    transition:width 1s ease;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Execution Log -->
+<div class="glass" style="padding:24px;margin-top:20px;animation:fadeIn 0.6s ease 0.6s both;">
+    <h3 style="font-size:15px;font-weight:700;color:rgba(255,255,255,0.7);margin-bottom:14px;">
+        📋 Agent Execution Log
+    </h3>
+    <div style="font-family:'Courier New',monospace;font-size:12px;">
+    <div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:35] [INFO] Starting design audit for: sample_images/before.png</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:35] [INFO] Validating input image...</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:35] [INFO] Input validation passed.</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:35] [INFO] Image info: {'filename': 'before.png', 'format': 'PNG', 'size': '1891x878px', 'mode': 'RGBA'}</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:35] [INFO] Calling Groq Vision API (attempt 1/3)...</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:37] [INFO] Groq Vision API call successful.</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:37] [INFO] AI returned 5 findings. Validating...</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:37] [INFO] Validation complete: 5 valid, 0 rejected.</div><div style="color:#30D158;margin-bottom:4px;opacity:0.8;">[2026-06-07T17:00:37] [INFO] Audit complete. 5 findings returned.</div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div style="text-align:center;padding:30px;animation:fadeIn 0.6s ease 0.8s both;">
+    <div style="
+        display:inline-flex;align-items:center;gap:10px;
+        background:rgba(255,255,255,0.04);
+        border:1px solid rgba(255,255,255,0.08);
+        padding:12px 24px;border-radius:30px;
+    ">
+        <span style="font-size:16px;">🎯</span>
+        <span style="color:rgba(255,255,255,0.4);font-size:13px;">
+            Design Audit Agent &nbsp;•&nbsp; Level 1 &nbsp;•&nbsp; June 07, 2026 at 17:00
+        </span>
+    </div>
+</div>
+
+</div>
+</body>
+</html>

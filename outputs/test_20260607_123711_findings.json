@@ -1,0 +1,79 @@
+{
+  "status": "success",
+  "image_info": {
+    "filename": "test.png",
+    "format": "PNG",
+    "size": "1242x898px",
+    "mode": "RGBA"
+  },
+  "summary": "The UI screenshot has several design issues related to visual hierarchy, contrast, spacing, alignment, and consistency.",
+  "overall_score": 60,
+  "total_findings": 5,
+  "findings": [
+    {
+      "id": "F001",
+      "principle": "visual_hierarchy",
+      "severity": "medium",
+      "location": "Top navigation bar",
+      "issue": "The 'Login' button is less prominent than the 'Cart' icon, which seems to be a button as well.",
+      "user_impact": "Users may find it unclear which one is a button and which one is an icon.",
+      "recommendation": "Make the 'Login' button consistent with other buttons or make the 'Cart' icon a button.",
+      "confidence": 80
+    },
+    {
+      "id": "F002",
+      "principle": "contrast",
+      "severity": "low",
+      "location": "Top navigation bar",
+      "issue": "The text 'Travel' has low contrast with the background.",
+      "user_impact": "Users may find it hard to read.",
+      "recommendation": "Increase the contrast between the text and background.",
+      "confidence": 60
+    },
+    {
+      "id": "F003",
+      "principle": "spacing",
+      "severity": "low",
+      "location": "Bottom section",
+      "issue": "The spacing between the bottom section items seems inconsistent.",
+      "user_impact": "Users may find it hard to distinguish between items.",
+      "recommendation": "Adjust the spacing to be consistent.",
+      "confidence": 70
+    },
+    {
+      "id": "F004",
+      "principle": "alignment",
+      "severity": "low",
+      "location": "Top navigation bar",
+      "issue": "The 'Location not set' text is not aligned with other top navigation items.",
+      "user_impact": "Users may find it visually unappealing.",
+      "recommendation": "Align the 'Location not set' text with other top navigation items.",
+      "confidence": 80
+    },
+    {
+      "id": "F005",
+      "principle": "consistency",
+      "severity": "low",
+      "location": "Bottom section",
+      "issue": "The image aspect ratios in the 'Grab or gone' section are not consistent.",
+      "user_impact": "Users may find it visually unappealing.",
+      "recommendation": "Use consistent image aspect ratios.",
+      "confidence": 90
+    }
+  ],
+  "rejected_findings_count": 0,
+  "severity_breakdown": {
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 4,
+    "info": 0
+  },
+  "principle_breakdown": {
+    "visual_hierarchy": 1,
+    "contrast": 1,
+    "spacing": 1,
+    "alignment": 1,
+    "consistency": 1
+  }
+}

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Audit Report — test.png</title>
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 30px 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    @keyframes slideIn {
+        from { opacity:0; transform:translateY(20px); }
+        to { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeIn {
+        from { opacity:0; }
+        to { opacity:1; }
+    }
+    @keyframes scoreAnim {
+        from { stroke-dashoffset: 314; }
+        to { stroke-dashoffset: 126; }
+    }
+    .finding-card:hover { cursor:default; }
+    .tab-btn { cursor:pointer; border:none; transition:all 0.2s; }
+    .tab-btn.active {
+        background: linear-gradient(135deg, #667eea, #764ba2) !important;
+        color: white !important;
+    }
+    @media(max-width:600px) {
+        .stats-row { flex-direction:column; }
+        .header-content { flex-direction:column; text-align:center; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div style="
+        background:white;
+        border-radius:24px;
+        padding:36px;
+        margin-bottom:20px;
+        box-shadow:0 20px 60px rgba(0,0,0,0.15);
+        animation:fadeIn 0.6s ease;
+    ">
+        <div class="header-content" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+            <div>
+                <div style="
+                    display:inline-block;
+                    background:linear-gradient(135deg,#667eea,#764ba2);
+                    color:white;padding:6px 16px;border-radius:20px;
+                    font-size:12px;font-weight:700;letter-spacing:1px;
+                    text-transform:uppercase;margin-bottom:12px;
+                ">🎯 Design Audit Report</div>
+                <h1 style="font-size:28px;font-weight:800;color:#1a1a2e;margin-bottom:8px;">UI/UX Analysis</h1>
+                <p style="color:#888;font-size:14px;">📁 test.png</p>
+                <p style="color:#aaa;font-size:13px;margin-top:4px;">🕐 June 07, 2026 at 16:21</p>
+            </div>
+            <!-- Score Circle -->
+            <div style="text-align:center;">
+                <svg width="120" height="120" style="transform:rotate(-90deg);">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#F0F0F0" stroke-width="10"/>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#F39C12" stroke-width="10"
+                        stroke-dasharray="314" stroke-dashoffset="126"
+                        stroke-linecap="round"
+                        style="animation:scoreAnim 1.5s ease forwards;"/>
+                </svg>
+                <div style="margin-top:-90px;margin-bottom:50px;">
+                    <div style="font-size:30px;font-weight:900;color:#F39C12;">60</div>
+                    <div style="font-size:12px;color:#888;font-weight:600;">Needs Work</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div style="
+            background:linear-gradient(135deg,#F8F9FF,#EEF2FF);
+            border-radius:14px;padding:18px 20px;margin-top:20px;
+            border-left:4px solid #667eea;
+        ">
+            <div style="font-size:12px;color:#667eea;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;">📝 Summary</div>
+            <div style="font-size:15px;color:#333;line-height:1.7;">The UI screenshot has several design issues related to visual hierarchy, contrast, spacing, alignment, and consistency.</div>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row" style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;animation:fadeIn 0.6s ease 0.2s both;">
+        
+    <div style="
+        background:white;
+        border-radius:16px;
+        padding:20px 24px;
+        text-align:center;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        border-top:4px solid #667eea;
+        flex:1;
+        min-width:140px;
+    ">
+        <div style="font-size:28px;margin-bottom:8px;">🔍</div>
+        <div style="font-size:32px;font-weight:800;color:#667eea;margin-bottom:4px;">5</div>
+        <div style="font-size:13px;color:#888;font-weight:500;">Total Findings</div>
+    </div>
+        
+    <div style="
+        background:white;
+        border-radius:16px;
+        padding:20px 24px;
+        text-align:center;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        border-top:4px solid #FF3B30;
+        flex:1;
+        min-width:140px;
+    ">
+        <div style="font-size:28px;margin-bottom:8px;">🔴</div>
+        <div style="font-size:32px;font-weight:800;color:#FF3B30;margin-bottom:4px;">0</div>
+        <div style="font-size:13px;color:#888;font-weight:500;">Critical</div>
+    </div>
+        
+    <div style="
+        background:white;
+        border-radius:16px;
+        padding:20px 24px;
+        text-align:center;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        border-top:4px solid #FF9500;
+        flex:1;
+        min-width:140px;
+    ">
+        <div style="font-size:28px;margin-bottom:8px;">🟠</div>
+        <div style="font-size:32px;font-weight:800;color:#FF9500;margin-bottom:4px;">0</div>
+        <div style="font-size:13px;color:#888;font-weight:500;">High</div>
+    </div>
+        
+    <div style="
+        background:white;
+        border-radius:16px;
+        padding:20px 24px;
+        text-align:center;
+        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+        border-top:4px solid #F39C12;
+        flex:1;
+        min-width:140px;
+    ">
+        <div style="font-size:28px;margin-bottom:8px;">⭐</div>
+        <div style="font-size:32px;font-weight:800;color:#F39C12;margin-bottom:4px;">60/100</div>
+        <div style="font-size:13px;color:#888;font-weight:500;">Design Score</div>
+    </div>
+    </div>
+
+    <!-- Breakdown Section -->
+    <div style="
+        display:grid;grid-template-columns:1fr 1fr;gap:16px;
+        margin-bottom:20px;animation:fadeIn 0.6s ease 0.3s both;
+    ">
+        <!-- Severity Breakdown -->
+        <div style="background:white;border-radius:20px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:18px;">📊 Severity Breakdown</h3>
+            
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <span style="width:70px;font-size:13px;color:#555;font-weight:600;text-transform:capitalize;">🟡 medium</span>
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:12px;overflow:hidden;">
+                    <div style="width:20%;background:#FFCC00;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:14px;font-weight:700;color:#FFCC00;min-width:20px;">1</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <span style="width:70px;font-size:13px;color:#555;font-weight:600;text-transform:capitalize;">🟢 low</span>
+                <div style="flex:1;background:#F0F0F0;border-radius:10px;height:12px;overflow:hidden;">
+                    <div style="width:80%;background:#34C759;height:100%;border-radius:10px;"></div>
+                </div>
+                <span style="font-size:14px;font-weight:700;color:#34C759;min-width:20px;">4</span>
+            </div>
+        </div>
+        <!-- Principle Breakdown -->
+        <div style="background:white;border-radius:20px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+            <h3 style="font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:18px;">🎨 Principles Affected</h3>
+            <div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:#9B59B615;
+                border:1.5px solid #9B59B640;
+                color:#9B59B6;
+                padding:8px 14px;border-radius:20px;
+                font-size:13px;font-weight:600;margin:4px;
+            ">👁️ Visual Hierarchy: <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:#E74C3C15;
+                border:1.5px solid #E74C3C40;
+                color:#E74C3C;
+                padding:8px 14px;border-radius:20px;
+                font-size:13px;font-weight:600;margin:4px;
+            ">🎨 Contrast (WCAG AA): <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:#3498DB15;
+                border:1.5px solid #3498DB40;
+                color:#3498DB;
+                padding:8px 14px;border-radius:20px;
+                font-size:13px;font-weight:600;margin:4px;
+            ">📐 Spacing: <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:#27AE6015;
+                border:1.5px solid #27AE6040;
+                color:#27AE60;
+                padding:8px 14px;border-radius:20px;
+                font-size:13px;font-weight:600;margin:4px;
+            ">⚖️ Alignment: <strong>1</strong></div>
+            <div style="
+                display:inline-flex;align-items:center;gap:6px;
+                background:#F39C1215;
+                border:1.5px solid #F39C1240;
+                color:#F39C12;
+                padding:8px 14px;border-radius:20px;
+                font-size:13px;font-weight:600;margin:4px;
+            ">🔗 Consistency: <strong>1</strong></div></div>
+        </div>
+    </div>
+
+    <!-- Findings -->
+    <div style="animation:fadeIn 0.6s ease 0.4s both;">
+        <div style="
+            display:flex;justify-content:space-between;align-items:center;
+            margin-bottom:16px;flex-wrap:wrap;gap:10px;
+        ">
+            <h2 style="font-size:22px;font-weight:800;color:white;">🔍 Detailed Findings</h2>
+            <div style="
+                background:rgba(255,255,255,0.2);
+                color:white;padding:6px 16px;
+                border-radius:20px;font-size:13px;font-weight:600;
+            ">5 issues found</div>
+        </div>
+        
+    <div class="finding-card" style="
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        border-left: 5px solid #FFCC00;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        animation: slideIn 0.4s ease 0.0s both;
+        transition: transform 0.2s, box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span style="font-size:22px;">🟡</span>
+                <div>
+                    <span style="
+                        background:#FFCC00;
+                        color:white;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:700;
+                        text-transform:uppercase;
+                        letter-spacing:0.5px;
+                    ">medium</span>
+                    <span style="
+                        background:#9B59B618;
+                        color:#9B59B6;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:600;
+                        margin-left:6px;
+                    ">👁️ Visual Hierarchy</span>
+                </div>
+            </div>
+            <span style="
+                color:#999;
+                font-size:12px;
+                font-weight:600;
+                background:#F8F8F8;
+                padding:4px 10px;
+                border-radius:8px;
+            ">F001</span>
+        </div>
+
+        <div style="
+            background:#FFFCEF;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Top navigation bar</div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">⚠️ Issue</div>
+            <div style="font-size:15px;color:#222;line-height:1.6;">The 'Login' button is not more prominent than other navigation items.</div>
+        </div>
+
+        <div style="
+            background:#F8F9FF;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #E8ECFF;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">👤 User Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.6;">Users may not notice the 'Login' button easily.</div>
+        </div>
+
+        <div style="
+            background:#F0FFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #C6F6D5;
+        ">
+            <div style="font-size:13px;color:#27AE60;font-weight:600;margin-bottom:6px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:#1E5631;line-height:1.6;">Make the 'Login' button more prominent using size, color, or typography.</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;">Confidence Score</div>
+            
+    <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+        <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+            <div style="width:80.0%;background:#27AE60;height:100%;border-radius:10px;transition:width 0.8s;"></div>
+        </div>
+        <span style="font-size:12px;color:#27AE60;font-weight:600;min-width:36px;">80%</span>
+    </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        border-left: 5px solid #34C759;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        animation: slideIn 0.4s ease 0.08s both;
+        transition: transform 0.2s, box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span style="font-size:22px;">🟢</span>
+                <div>
+                    <span style="
+                        background:#34C759;
+                        color:white;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:700;
+                        text-transform:uppercase;
+                        letter-spacing:0.5px;
+                    ">low</span>
+                    <span style="
+                        background:#E74C3C18;
+                        color:#E74C3C;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:600;
+                        margin-left:6px;
+                    ">🎨 Contrast (WCAG AA)</span>
+                </div>
+            </div>
+            <span style="
+                color:#999;
+                font-size:12px;
+                font-weight:600;
+                background:#F8F8F8;
+                padding:4px 10px;
+                border-radius:8px;
+            ">F002</span>
+        </div>
+
+        <div style="
+            background:#EFFFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Search bar text</div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">⚠️ Issue</div>
+            <div style="font-size:15px;color:#222;line-height:1.6;">The search bar text 'Search for Products, Brands and More' has low contrast with the background.</div>
+        </div>
+
+        <div style="
+            background:#F8F9FF;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #E8ECFF;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">👤 User Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.6;">Users may find it hard to read the search bar text.</div>
+        </div>
+
+        <div style="
+            background:#F0FFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #C6F6D5;
+        ">
+            <div style="font-size:13px;color:#27AE60;font-weight:600;margin-bottom:6px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:#1E5631;line-height:1.6;">Increase the contrast between the search bar text and background.</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;">Confidence Score</div>
+            
+    <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+        <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+            <div style="width:60.0%;background:#F39C12;height:100%;border-radius:10px;transition:width 0.8s;"></div>
+        </div>
+        <span style="font-size:12px;color:#F39C12;font-weight:600;min-width:36px;">60%</span>
+    </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        border-left: 5px solid #34C759;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        animation: slideIn 0.4s ease 0.16s both;
+        transition: transform 0.2s, box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span style="font-size:22px;">🟢</span>
+                <div>
+                    <span style="
+                        background:#34C759;
+                        color:white;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:700;
+                        text-transform:uppercase;
+                        letter-spacing:0.5px;
+                    ">low</span>
+                    <span style="
+                        background:#3498DB18;
+                        color:#3498DB;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:600;
+                        margin-left:6px;
+                    ">📐 Spacing</span>
+                </div>
+            </div>
+            <span style="
+                color:#999;
+                font-size:12px;
+                font-weight:600;
+                background:#F8F8F8;
+                padding:4px 10px;
+                border-radius:8px;
+            ">F003</span>
+        </div>
+
+        <div style="
+            background:#EFFFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Bottom product images</div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">⚠️ Issue</div>
+            <div style="font-size:15px;color:#222;line-height:1.6;">The spacing between the bottom product images is inconsistent.</div>
+        </div>
+
+        <div style="
+            background:#F8F9FF;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #E8ECFF;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">👤 User Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.6;">Users may find it hard to distinguish between products.</div>
+        </div>
+
+        <div style="
+            background:#F0FFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #C6F6D5;
+        ">
+            <div style="font-size:13px;color:#27AE60;font-weight:600;margin-bottom:6px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:#1E5631;line-height:1.6;">Use consistent spacing between product images.</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;">Confidence Score</div>
+            
+    <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+        <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+            <div style="width:70.0%;background:#F39C12;height:100%;border-radius:10px;transition:width 0.8s;"></div>
+        </div>
+        <span style="font-size:12px;color:#F39C12;font-weight:600;min-width:36px;">70%</span>
+    </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        border-left: 5px solid #34C759;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        animation: slideIn 0.4s ease 0.24s both;
+        transition: transform 0.2s, box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span style="font-size:22px;">🟢</span>
+                <div>
+                    <span style="
+                        background:#34C759;
+                        color:white;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:700;
+                        text-transform:uppercase;
+                        letter-spacing:0.5px;
+                    ">low</span>
+                    <span style="
+                        background:#27AE6018;
+                        color:#27AE60;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:600;
+                        margin-left:6px;
+                    ">⚖️ Alignment</span>
+                </div>
+            </div>
+            <span style="
+                color:#999;
+                font-size:12px;
+                font-weight:600;
+                background:#F8F8F8;
+                padding:4px 10px;
+                border-radius:8px;
+            ">F004</span>
+        </div>
+
+        <div style="
+            background:#EFFFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Top navigation bar</div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">⚠️ Issue</div>
+            <div style="font-size:15px;color:#222;line-height:1.6;">The 'Travel' and 'More' menu items are not aligned with other navigation items.</div>
+        </div>
+
+        <div style="
+            background:#F8F9FF;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #E8ECFF;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">👤 User Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.6;">Users may find the navigation bar layout uneven.</div>
+        </div>
+
+        <div style="
+            background:#F0FFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #C6F6D5;
+        ">
+            <div style="font-size:13px;color:#27AE60;font-weight:600;margin-bottom:6px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:#1E5631;line-height:1.6;">Align all navigation items properly.</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;">Confidence Score</div>
+            
+    <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+        <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+            <div style="width:80.0%;background:#27AE60;height:100%;border-radius:10px;transition:width 0.8s;"></div>
+        </div>
+        <span style="font-size:12px;color:#27AE60;font-weight:600;min-width:36px;">80%</span>
+    </div>
+        </div>
+    </div>
+    <div class="finding-card" style="
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        border-left: 5px solid #34C759;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        animation: slideIn 0.4s ease 0.32s both;
+        transition: transform 0.2s, box-shadow 0.2s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.12)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span style="font-size:22px;">🟢</span>
+                <div>
+                    <span style="
+                        background:#34C759;
+                        color:white;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:700;
+                        text-transform:uppercase;
+                        letter-spacing:0.5px;
+                    ">low</span>
+                    <span style="
+                        background:#F39C1218;
+                        color:#F39C12;
+                        padding:3px 12px;
+                        border-radius:20px;
+                        font-size:11px;
+                        font-weight:600;
+                        margin-left:6px;
+                    ">🔗 Consistency</span>
+                </div>
+            </div>
+            <span style="
+                color:#999;
+                font-size:12px;
+                font-weight:600;
+                background:#F8F8F8;
+                padding:4px 10px;
+                border-radius:8px;
+            ">F005</span>
+        </div>
+
+        <div style="
+            background:#EFFFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:4px;">📍 Location</div>
+            <div style="font-size:14px;color:#333;font-weight:500;">Product cards</div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">⚠️ Issue</div>
+            <div style="font-size:15px;color:#222;line-height:1.6;">The product cards have different layouts and font sizes.</div>
+        </div>
+
+        <div style="
+            background:#F8F9FF;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #E8ECFF;
+        ">
+            <div style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;">👤 User Impact</div>
+            <div style="font-size:14px;color:#444;line-height:1.6;">Users may find the product cards inconsistent.</div>
+        </div>
+
+        <div style="
+            background:#F0FFF4;
+            border-radius:10px;
+            padding:14px 16px;
+            margin-bottom:14px;
+            border:1px solid #C6F6D5;
+        ">
+            <div style="font-size:13px;color:#27AE60;font-weight:600;margin-bottom:6px;">✅ Recommendation</div>
+            <div style="font-size:14px;color:#1E5631;line-height:1.6;">Use a consistent layout and typography for product cards.</div>
+        </div>
+
+        <div>
+            <div style="font-size:12px;color:#888;font-weight:600;">Confidence Score</div>
+            
+    <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+        <div style="flex:1;background:#F0F0F0;border-radius:10px;height:8px;overflow:hidden;">
+            <div style="width:70.0%;background:#F39C12;height:100%;border-radius:10px;transition:width 0.8s;"></div>
+        </div>
+        <span style="font-size:12px;color:#F39C12;font-weight:600;min-width:36px;">70%</span>
+    </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Audit Log -->
+    <div style="
+        background:rgba(0,0,0,0.3);
+        border-radius:20px;padding:24px;
+        margin-top:20px;animation:fadeIn 0.6s ease 0.6s both;
+    ">
+        <h3 style="color:white;font-size:16px;font-weight:700;margin-bottom:14px;">📋 Agent Execution Log</h3>
+        <div style="font-family:monospace;font-size:12px;">
+        <div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:37] [INFO] Starting design audit for: sample_images/test.png</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:37] [INFO] Validating input image...</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:37] [INFO] Input validation passed.</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:37] [INFO] Image info: {'filename': 'test.png', 'format': 'PNG', 'size': '1242x898px', 'mode': 'RGBA'}</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:37] [INFO] Calling Groq Vision API (attempt 1/3)...</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:39] [INFO] Groq Vision API call successful.</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:39] [INFO] AI returned 5 findings. Validating...</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:39] [INFO] Validation complete: 5 valid, 0 rejected.</div><div style="color:#00FF88;margin-bottom:4px;">[2026-06-07T16:21:39] [INFO] Audit complete. 5 findings returned.</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;padding:24px;color:rgba(255,255,255,0.7);font-size:13px;">
+        Generated by Design Audit Agent &nbsp;•&nbsp; June 07, 2026 at 16:21
+    </div>
+
+</div>
+</body>
+</html>

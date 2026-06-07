@@ -1,0 +1,5 @@
+google-generativeai==0.8.6
+Pillow
+python-dotenv
+rich
+jinja2

@@ -1,0 +1,79 @@
+{
+  "status": "success",
+  "image_info": {
+    "filename": "test.png",
+    "format": "PNG",
+    "size": "1920x921px",
+    "mode": "RGBA"
+  },
+  "summary": "The Amazon India homepage has several design issues related to visual hierarchy, contrast, spacing, alignment, and consistency.",
+  "overall_score": 60,
+  "total_findings": 5,
+  "findings": [
+    {
+      "id": "F001",
+      "principle": "visual_hierarchy",
+      "severity": "medium",
+      "location": "top navigation bar",
+      "issue": "The 'Mega Deal Days' banner is prominent but the 'Deals Trending Now Under ₹999' section header is equally large, causing visual competition.",
+      "user_impact": "Users may find it difficult to focus on primary actions.",
+      "recommendation": "Make the primary action (search) more prominent and distinguishable from secondary actions.",
+      "confidence": 80
+    },
+    {
+      "id": "F002",
+      "principle": "contrast",
+      "severity": "low",
+      "location": "top navigation bar background",
+      "issue": "The background color of the top navigation bar has a low contrast with the text color.",
+      "user_impact": "Users may experience slight visual discomfort.",
+      "recommendation": "Increase the contrast between the background and text colors to meet WCAG AA standards.",
+      "confidence": 60
+    },
+    {
+      "id": "F003",
+      "principle": "spacing",
+      "severity": "low",
+      "location": "section headers and content",
+      "issue": "The spacing between section headers and their content is inconsistent.",
+      "user_impact": "Users may find it slightly difficult to distinguish between sections.",
+      "recommendation": "Standardize the spacing between section headers and content.",
+      "confidence": 70
+    },
+    {
+      "id": "F004",
+      "principle": "alignment",
+      "severity": "low",
+      "location": "section content",
+      "issue": "Some section content is not perfectly aligned (e.g., images and text).",
+      "user_impact": "Users may notice slight visual dissonance.",
+      "recommendation": "Ensure consistent alignment of content within sections.",
+      "confidence": 65
+    },
+    {
+      "id": "F005",
+      "principle": "consistency",
+      "severity": "low",
+      "location": "button styles",
+      "issue": "The 'Update location' button has a different style compared to other buttons on the page.",
+      "user_impact": "Users may find it slightly confusing.",
+      "recommendation": "Standardize button styles across the page.",
+      "confidence": 70
+    }
+  ],
+  "rejected_findings_count": 0,
+  "severity_breakdown": {
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 4,
+    "info": 0
+  },
+  "principle_breakdown": {
+    "visual_hierarchy": 1,
+    "contrast": 1,
+    "spacing": 1,
+    "alignment": 1,
+    "consistency": 1
+  }
+}

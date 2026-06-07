@@ -1,0 +1,79 @@
+{
+  "status": "success",
+  "image_info": {
+    "filename": "test.png",
+    "format": "PNG",
+    "size": "1917x852px",
+    "mode": "RGBA"
+  },
+  "summary": "The Swiggy homepage has several design issues related to visual hierarchy, contrast, spacing, alignment, and consistency.",
+  "overall_score": 60,
+  "total_findings": 5,
+  "findings": [
+    {
+      "id": "F001",
+      "principle": "visual_hierarchy",
+      "severity": "medium",
+      "location": "Top center of the page",
+      "issue": "The tagline 'Order food & groceries. Discover best restaurants. Swiggy it!' is in a larger font than the rest of the text, but it's not clear if it's intentionally prominent or not.",
+      "user_impact": "It may distract users from the main purpose of the page.",
+      "recommendation": "Consider making the tagline font size smaller or making it less prominent.",
+      "confidence": 80
+    },
+    {
+      "id": "F002",
+      "principle": "contrast",
+      "severity": "critical",
+      "location": "Top center of the page, tagline and search bar",
+      "issue": "The contrast between the orange background and the white text of the tagline and search bar placeholder is low.",
+      "user_impact": "It may be difficult for users to read the text.",
+      "recommendation": "Increase the contrast by changing the text color to a darker shade.",
+      "confidence": 90
+    },
+    {
+      "id": "F003",
+      "principle": "spacing",
+      "severity": "low",
+      "location": "Between the three service cards (Food Delivery, Instamart, Dineout)",
+      "issue": "The spacing between the cards is inconsistent, with more space between the first and second card than between the second and third.",
+      "user_impact": "It may make the page look unbalanced.",
+      "recommendation": "Make the spacing between the cards consistent.",
+      "confidence": 60
+    },
+    {
+      "id": "F004",
+      "principle": "alignment",
+      "severity": "medium",
+      "location": "The three service cards",
+      "issue": "The cards are not aligned to the same baseline, which may make the page look unbalanced.",
+      "user_impact": "It may make the page look unprofessional.",
+      "recommendation": "Align the cards to the same baseline.",
+      "confidence": 70
+    },
+    {
+      "id": "F005",
+      "principle": "consistency",
+      "severity": "low",
+      "location": "The service cards",
+      "issue": "The font sizes of the service card titles and descriptions are different.",
+      "user_impact": "It may make the page look inconsistent.",
+      "recommendation": "Make the font sizes consistent across the service cards.",
+      "confidence": 50
+    }
+  ],
+  "rejected_findings_count": 0,
+  "severity_breakdown": {
+    "critical": 1,
+    "high": 0,
+    "medium": 2,
+    "low": 2,
+    "info": 0
+  },
+  "principle_breakdown": {
+    "visual_hierarchy": 1,
+    "contrast": 1,
+    "spacing": 1,
+    "alignment": 1,
+    "consistency": 1
+  }
+}
