@@ -160,15 +160,15 @@ That's it. PixelProbe will generate two files in the `outputs/` folder:
 
 ## 📁 Project Structure
 pixelprobe-design-audit-agent/
-├── agent.py          # Core AI agent — Groq Vision API integration
-├── compare.py        # Level 2 comparison engine
-├── validator.py      # Input/output guard rails + anti-hallucination
-├── report.py         # Level 1 dark mode HTML report generator
+├── agent.py# Core AI agent — Groq Vision API integration
+├── compare.py# Level 2 comparison engine
+├── validator.py# Input/output guard rails + anti-hallucination
+├── report.py# Level 1 dark mode HTML report generator
 ├── report_compare.py # Level 2 comparison HTML report generator
-├── main.py           # Entry point — handles Level 1 and Level 2
-├── requirements.txt  # Python dependencies
-├── sample_images/    # Put your test screenshots here
-└── outputs/          # Generated reports appear here
+├── main.py# Entry point — handles Level 1 and Level 2
+├── requirements.txt# Python dependencies
+├── sample_images/# Put your test screenshots here
+└── outputs/# Generated reports appear here
 
 ---
 
