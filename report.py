@@ -243,7 +243,7 @@ body::before{{
                 color:white;padding:6px 16px;border-radius:20px;
                 font-size:11px;font-weight:700;letter-spacing:1px;
                 text-transform:uppercase;margin-bottom:16px;
-            ">🎯 Design Audit Report</div>
+            ">🔍 PixelProbe — Design Audit</div>
 
             <h1 style="
                 font-size:32px;font-weight:900;
@@ -369,7 +369,7 @@ body::before{{
     ">
         <span style="font-size:16px;">🎯</span>
         <span style="color:rgba(255,255,255,0.4);font-size:13px;">
-            Design Audit Agent &nbsp;•&nbsp; Level 1 &nbsp;•&nbsp; {now}
+            PixelProbe &nbsp;•&nbsp; AI-Powered Design Intelligence &nbsp;•&nbsp; {now}
         </span>
     </div>
 </div>

@@ -18,7 +18,8 @@ from report_compare import generate_compare_html_report
 
 def run_level1(image_path: str):
     print("\n" + "="*60)
-    print("   🎯 DESIGN AUDIT AGENT — Level 1: Single Page Analysis")
+    print("   🔍 PixelProbe — AI-Powered Design Intelligence")
+    print("   ✨ Catching design issues before your users do.")
     print("="*60 + "\n")
 
     if not Path(image_path).exists():
@@ -61,7 +62,8 @@ def run_level1(image_path: str):
 
 def run_level2(baseline_path: str, current_path: str):
     print("\n" + "="*60)
-    print("   🔍 DESIGN AUDIT AGENT — Level 2: Regression Analysis")
+    print("   🔍 PixelProbe — Before/After Regression Analysis")
+    print("   ✨ Detecting regressions before they reach your users.")
     print("="*60 + "\n")
 
     print(f"📸 Baseline : {baseline_path}")

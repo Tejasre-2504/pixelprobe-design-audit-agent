@@ -149,6 +149,38 @@ class DesignAuditAgent:
             self._log("ERROR", f"Failed to parse JSON response: {e}")
             raise ValueError(f"AI returned invalid JSON: {e}")
 
+    def _calculate_score(self, findings: list) -> int:
+        """
+        Calculate design score mathematically from findings.
+        Starts at 100 and deducts points based on severity
+        and confidence of each finding.
+        More critical findings = lower score.
+        All low/info findings = higher score.
+        """
+        if not findings:
+            return 95
+
+        # Points deducted per severity level
+        deductions = {
+            "critical": 20,
+            "high":     12,
+            "medium":    7,
+            "low":       3,
+            "info":      1
+        }
+
+        total_deduction = 0
+        for f in findings:
+            sev = f.get("severity", "info").lower()
+            weight = deductions.get(sev, 1)
+            # Weight deduction by confidence — low confidence = smaller deduction
+            confidence = float(f.get("confidence", 50)) / 100
+            total_deduction += weight * confidence
+
+        score = max(0, min(100, round(100 - total_deduction)))
+        self._log("INFO", f"Design score calculated: {score}/100 (deducted {total_deduction:.1f} points from {len(findings)} findings)")
+        return score
+
     def analyze(self, image_path: str) -> dict:
         self._log("INFO", f"Starting design audit for: {image_path}")
 
@@ -182,11 +214,14 @@ class DesignAuditAgent:
             for r in rejected_findings:
                 self._log("WARNING", f"Rejected finding {r.get('id','?')}: {r.get('_rejection_reasons')}")
 
+        # Calculate score mathematically — never trust AI's own score
+        calculated_score = self._calculate_score(valid_findings)
+
         result = {
             "status": "success",
             "image_info": image_info,
             "summary": parsed.get("summary", "No summary provided."),
-            "overall_score": parsed.get("overall_score", 0),
+            "overall_score": calculated_score,
             "total_findings": len(valid_findings),
             "findings": valid_findings,
             "rejected_findings_count": len(rejected_findings),
@@ -207,7 +242,10 @@ class DesignAuditAgent:
         return counts
 
     def _count_principles(self, findings: list) -> dict:
-        counts = {"visual_hierarchy": 0, "contrast": 0, "spacing": 0, "alignment": 0, "consistency": 0}
+        counts = {
+            "visual_hierarchy": 0, "contrast": 0,
+            "spacing": 0, "alignment": 0, "consistency": 0
+        }
         for f in findings:
             p = f.get("principle", "").lower()
             if p in counts:
