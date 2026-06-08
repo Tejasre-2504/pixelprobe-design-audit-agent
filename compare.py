@@ -155,12 +155,15 @@ class CompareAgent:
         valid = []
         rejected = []
         for d in differences:
-            required = {"id","location","what_changed","before","after","classification","ux_impact","confidence"}
+            required = {
+                "id", "location", "what_changed", "before",
+                "after", "classification", "ux_impact", "confidence"
+            }
             missing = required - set(d.keys())
             errors = []
             if missing:
                 errors.append(f"Missing fields: {missing}")
-            if d.get("classification","") not in {"improvement","regression","neutral"}:
+            if d.get("classification", "") not in {"improvement", "regression", "neutral"}:
                 errors.append(f"Invalid classification: {d.get('classification')}")
             conf = d.get("confidence", -1)
             try:
@@ -176,13 +179,70 @@ class CompareAgent:
                 valid.append(d)
         return valid, rejected
 
+    def _calculate_confidence(self, differences: list) -> int:
+        """
+        Calculate overall confidence mathematically
+        from individual finding confidence scores.
+        Avoids always returning 100 by applying variance penalty.
+        """
+        if not differences:
+            return 0
+
+        scores = [float(d.get("confidence", 50)) for d in differences]
+        avg = sum(scores) / len(scores)
+
+        # Variance penalty — if all scores are identical reduce confidence
+        variance = max(scores) - min(scores)
+        if variance < 5:
+            avg = avg * 0.85
+
+        # Regression penalty — regressions add uncertainty
+        regression_count = sum(
+            1 for d in differences
+            if d.get("classification") == "regression"
+        )
+        if regression_count > 0:
+            avg = avg - (regression_count * 2)
+
+        calculated = max(0, min(100, round(avg)))
+        self._log("INFO", f"Overall confidence calculated: {calculated}% (avg={avg:.1f}, variance={variance:.1f})")
+        return calculated
+
+    def _calculate_counts(self, differences: list) -> dict:
+        """
+        Calculate improvement/regression/neutral counts
+        from validated differences — never trust AI counts.
+        """
+        counts = {"improvement": 0, "regression": 0, "neutral": 0}
+        for d in differences:
+            cls = d.get("classification", "neutral").lower()
+            if cls in counts:
+                counts[cls] += 1
+        return counts
+
+    def _calculate_verdict(self, differences: list) -> str:
+        """
+        Calculate overall verdict mathematically
+        based on regression vs improvement counts.
+        """
+        counts = self._calculate_counts(differences)
+        if counts["regression"] > counts["improvement"]:
+            return "regressed"
+        elif counts["improvement"] > counts["regression"]:
+            return "improved"
+        else:
+            return "neutral"
+
     def compare(self, baseline_path: str, current_path: str) -> dict:
         self._log("INFO", f"Starting comparison: {baseline_path} vs {current_path}")
 
-        # Validate both images exist
         for path in [baseline_path, current_path]:
             if not Path(path).exists():
-                return {"status": "error", "error": f"File not found: {path}", "logs": self.logs}
+                return {
+                    "status": "error",
+                    "error": f"File not found: {path}",
+                    "logs": self.logs
+                }
 
         try:
             raw = self._call_groq(baseline_path, current_path)
@@ -200,22 +260,32 @@ class CompareAgent:
         valid_diffs, rejected = self._validate_differences(differences)
         self._log("INFO", f"Validation: {len(valid_diffs)} valid, {len(rejected)} rejected.")
 
-        # Count accessibility flags
+        # Calculate everything mathematically — never trust AI numbers
+        counts = self._calculate_counts(valid_diffs)
+        calculated_confidence = self._calculate_confidence(valid_diffs)
+        calculated_verdict = self._calculate_verdict(valid_diffs)
+
         accessibility_regressions = [
             d for d in valid_diffs
             if d.get("accessibility_flag") and d.get("classification") == "regression"
         ]
 
+        self._log("INFO", f"Verdict: {calculated_verdict} | "
+                          f"Improvements: {counts['improvement']} | "
+                          f"Regressions: {counts['regression']} | "
+                          f"Neutral: {counts['neutral']} | "
+                          f"Confidence: {calculated_confidence}%")
+
         result = {
             "status": "success",
             "baseline_image": Path(baseline_path).name,
             "current_image": Path(current_path).name,
-            "overall_verdict": parsed.get("overall_verdict", "neutral"),
+            "overall_verdict": calculated_verdict,
             "net_summary": parsed.get("net_summary", "No summary."),
-            "improvement_count": parsed.get("improvement_count", 0),
-            "regression_count": parsed.get("regression_count", 0),
-            "neutral_count": parsed.get("neutral_count", 0),
-            "overall_confidence": parsed.get("overall_confidence", 0),
+            "improvement_count": counts["improvement"],
+            "regression_count": counts["regression"],
+            "neutral_count": counts["neutral"],
+            "overall_confidence": calculated_confidence,
             "total_differences": len(valid_diffs),
             "accessibility_regressions": len(accessibility_regressions),
             "differences": valid_diffs,
